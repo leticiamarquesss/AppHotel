@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AppHotel.MainPage"
+    Title="AppHotel"
+    BackgroundColor="#F5F2EC">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- TELA INICIAL -->
+        <ContentView x:Name="HomeView" Grid.Row="0">
+            <ScrollView>
+                <VerticalStackLayout Padding="24" Spacing="22">
+
+                    <!-- CABEÇALHO -->
+                    <VerticalStackLayout Spacing="5">
+                        <Label
+                            Text="APPHOTEL"
+                            FontSize="13"
+                            FontAttributes="Bold"
+                            CharacterSpacing="5"
+                            TextColor="#B99A62"/>
+
+                        <Label
+                            Text="Sua próxima estadia começa aqui."
+                            FontSize="27"
+                            FontAttributes="Bold"
+                            TextColor="#17283F"/>
+
+                        <Label
+                            Text="Conforto e tranquilidade em cada detalhe."
+                            FontSize="14"
+                            TextColor="#777D86"/>
+                    </VerticalStackLayout>
+
+                    <!-- DESTAQUE -->
+                    <Border
+                        BackgroundColor="#17283F"
+                        Padding="24"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 20">
+
+                        <VerticalStackLayout Spacing="12">
+                            <Label
+                                Text="BEM-VINDO AO APPHOTEL"
+                                FontSize="11"
+                                CharacterSpacing="2"
+                                TextColor="#D9BD85"/>
+
+                            <Label
+                                Text="Uma experiência especial espera por você."
+                                FontSize="24"
+                                FontAttributes="Bold"
+                                TextColor="White"/>
+
+                            <Label
+                                Text="Planeje sua viagem e organize sua hospedagem de maneira simples e prática."
+                                FontSize="14"
+                                TextColor="#E5E8ED"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- FORMULÁRIO -->
+                    <VerticalStackLayout Spacing="16">
+
+                        <VerticalStackLayout Spacing="4">
+                            <Label
+                                Text="FAÇA SUA RESERVA"
+                                FontSize="11"
+                                CharacterSpacing="2"
+                                TextColor="#B18A45"/>
+
+                            <Label
+                                Text="Nova reserva"
+                                FontSize="24"
+                                FontAttributes="Bold"
+                                TextColor="#17283F"/>
+                        </VerticalStackLayout>
+
+                        <!-- NOME -->
+                        <VerticalStackLayout Spacing="7">
+                            <Label
+                                Text="Nome do hóspede"
+                                FontAttributes="Bold"
+                                TextColor="#34445A"/>
+
+                            <Border
+                                BackgroundColor="White"
+                                Stroke="#E5DED1"
+                                StrokeThickness="1"
+                                Padding="5"
+                                StrokeShape="RoundRectangle 12">
+
+                                <Entry
+                                    x:Name="NameEntry"
+                                    Placeholder="Digite seu nome completo"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#17283F"
+                                    PlaceholderColor="#929BA8"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- ACOMODAÇÃO -->
+                        <VerticalStackLayout Spacing="7">
+                            <Label
+                                Text="Tipo de acomodação"
+                                FontAttributes="Bold"
+                                TextColor="#34445A"/>
+
+                            <Border
+                                BackgroundColor="White"
+                                Stroke="#E5DED1"
+                                StrokeThickness="1"
+                                Padding="5"
+                                StrokeShape="RoundRectangle 12">
+
+                                <Picker
+                                    x:Name="RoomPicker"
+                                    Title="Selecione uma acomodação"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#17283F">
+
+                                    <Picker.Items>
+                                        <x:String>Quarto Standard</x:String>
+                                        <x:String>Quarto Deluxe</x:String>
+                                        <x:String>Suíte Master</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- DATAS -->
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+
+                            <VerticalStackLayout Grid.Column="0" Spacing="7">
+                                <Label
+                                    Text="Check-in"
+                                    FontAttributes="Bold"
+                                    TextColor="#34445A"/>
+
+                                <Border
+                                    BackgroundColor="White"
+                                    Stroke="#E5DED1"
+                                    StrokeThickness="1"
+                                    Padding="5"
+                                    StrokeShape="RoundRectangle 12">
+
+                                    <DatePicker
+                                        x:Name="CheckInPicker"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#17283F"
+                                        Format="dd/MM/yyyy"/>
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1" Spacing="7">
+                                <Label
+                                    Text="Check-out"
+                                    FontAttributes="Bold"
+                                    TextColor="#34445A"/>
+
+                                <Border
+                                    BackgroundColor="White"
+                                    Stroke="#E5DED1"
+                                    StrokeThickness="1"
+                                    Padding="5"
+                                    StrokeShape="RoundRectangle 12">
+
+                                    <DatePicker
+                                        x:Name="CheckOutPicker"
+                                        BackgroundColor="Transparent"
+                                        TextColor="#17283F"
+                                        Format="dd/MM/yyyy"/>
+                                </Border>
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                        <!-- HÓSPEDES -->
+                        <VerticalStackLayout Spacing="7">
+                            <Label
+                                Text="Quantidade de hóspedes"
+                                FontAttributes="Bold"
+                                TextColor="#34445A"/>
+
+                            <Border
+                                BackgroundColor="White"
+                                Stroke="#E5DED1"
+                                StrokeThickness="1"
+                                Padding="12"
+                                StrokeShape="RoundRectangle 12">
+
+                                <HorizontalStackLayout
+                                    Spacing="18"
+                                    VerticalOptions="Center">
+
+                                    <Stepper
+                                        x:Name="GuestsStepper"
+                                        Minimum="1"
+                                        Maximum="6"
+                                        Value="2"
+                                        Increment="1"
+                                        ValueChanged="OnGuestsChanged"/>
+
+                                    <Label
+                                        x:Name="GuestsLabel"
+                                        Text="2 hóspedes"
+                                        FontSize="15"
+                                        TextColor="#17283F"
+                                        VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <!-- BOTÃO -->
+                        <Button
+                            Text="CONFIRMAR RESERVA"
+                            Clicked="OnReservarClicked"
+                            BackgroundColor="#B18A45"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="56"
+                            FontSize="14"/>
+
+                    </VerticalStackLayout>
+
+                    <!-- MINHAS RESERVAS -->
+                    <VerticalStackLayout Spacing="13">
+
+                        <VerticalStackLayout Spacing="4">
+                            <Label
+                                Text="SUA HOSPEDAGEM"
+                                FontSize="11"
+                                CharacterSpacing="2"
+                                TextColor="#B18A45"/>
+
+                            <Label
+                                Text="Minhas reservas"
+                                FontSize="24"
+                                FontAttributes="Bold"
+                                TextColor="#17283F"/>
+                        </VerticalStackLayout>
+
+                        <CollectionView
+                            x:Name="BookingList"
+                            EmptyView="Suas reservas aparecerão aqui.">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Border
+                                        BackgroundColor="White"
+                                        Padding="17"
+                                        Margin="0,0,0,12"
+                                        Stroke="#E5DED1"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 15">
+
+                                        <VerticalStackLayout Spacing="7">
+
+                                            <Label
+                                                Text="{Binding Nome}"
+                                                FontSize="18"
+                                                FontAttributes="Bold"
+                                                TextColor="#17283F"/>
+
+                                            <Label
+                                                Text="{Binding Quarto}"
+                                                FontSize="14"
+                                                FontAttributes="Bold"
+                                                TextColor="#B18A45"/>
+
+                                            <BoxView
+                                                HeightRequest="1"
+                                                BackgroundColor="#EEE9DF"
+                                                Margin="0,4"/>
+
+                                            <Label
+                                                Text="{Binding Periodo}"
+                                                FontSize="13"
+                                                TextColor="#697586"/>
+
+                                            <Label
+                                                Text="{Binding Hospedes, StringFormat='Hóspedes: {0}'}"
+                                                FontSize="13"
+                                                TextColor="#697586"/>
+
+                                        </VerticalStackLayout>
+                                    </Border>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+
+                    <Label
+                        Text="APPHOTEL • Sua experiência começa aqui."
+                        FontSize="11"
+                        TextColor="#929BA8"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,10,0,15"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </ContentView>
+
+        <!-- SEGUNDA TELA -->
+        <ContentView
+            x:Name="AboutView"
+            Grid.Row="0"
+            IsVisible="False">
+
+            <ScrollView>
+                <VerticalStackLayout Padding="25" Spacing="22">
+
+                    <Label
+                        Text="APPHOTEL"
+                        FontSize="13"
+                        FontAttributes="Bold"
+                        CharacterSpacing="5"
+                        TextColor="#B99A62"/>
+
+                    <Border
+                        BackgroundColor="#17283F"
+                        Padding="25"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 20">
+
+                        <VerticalStackLayout Spacing="13">
+
+                            <Label
+                                Text="SOBRE NÓS"
+                                FontSize="11"
+                                CharacterSpacing="3"
+                                TextColor="#D9BD85"/>
+
+                            <Label
+                                Text="Mais praticidade para sua hospedagem."
+                                FontSize="27"
+                                FontAttributes="Bold"
+                                TextColor="White"/>
+
+                            <Label
+                                Text="O AppHotel foi desenvolvido para facilitar a organização de reservas e proporcionar uma experiência simples e intuitiva aos hóspedes."
+                                FontSize="15"
+                                TextColor="#E5E8ED"/>
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label
+                            Text="Nossa proposta"
+                            FontSize="23"
+                            FontAttributes="Bold"
+                            TextColor="#17283F"/>
+
+                        <Label
+                            Text="Reunir em um só lugar as principais informações necessárias para organizar uma hospedagem."
+                            FontSize="14"
+                            TextColor="#697586"/>
+                    </VerticalStackLayout>
+
+                    <Border
+                        BackgroundColor="White"
+                        Padding="18"
+                        Stroke="#E5DED1"
+                        StrokeShape="RoundRectangle 15">
+
+                        <VerticalStackLayout Spacing="7">
+                            <Label
+                                Text="01  •  ORGANIZAÇÃO"
+                                FontSize="11"
+                                CharacterSpacing="1"
+                                TextColor="#B18A45"/>
+
+                            <Label
+                                Text="Reservas centralizadas"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#17283F"/>
+
+                            <Label
+                                Text="Consulte os dados das reservas cadastradas em uma única tela."
+                                FontSize="14"
+                                TextColor="#697586"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border
+                        BackgroundColor="White"
+                        Padding="18"
+                        Stroke="#E5DED1"
+                        StrokeShape="RoundRectangle 15">
+
+                        <VerticalStackLayout Spacing="7">
+                            <Label
+                                Text="02  •  PRATICIDADE"
+                                FontSize="11"
+                                CharacterSpacing="1"
+                                TextColor="#B18A45"/>
+
+                            <Label
+                                Text="Cadastro simplificado"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#17283F"/>
+
+                            <Label
+                                Text="Informe os dados do hóspede, escolha a acomodação e selecione o período da estadia."
+                                FontSize="14"
+                                TextColor="#697586"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border
+                        BackgroundColor="White"
+                        Padding="18"
+                        Stroke="#E5DED1"
+                        StrokeShape="RoundRectangle 15">
+
+                        <VerticalStackLayout Spacing="7">
+                            <Label
+                                Text="03  •  EXPERIÊNCIA"
+                                FontSize="11"
+                                CharacterSpacing="1"
+                                TextColor="#B18A45"/>
+
+                            <Label
+                                Text="Interface intuitiva"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#17283F"/>
+
+                            <Label
+                                Text="Uma apresentação organizada para tornar a utilização do aplicativo mais simples."
+                                FontSize="14"
+                                TextColor="#697586"/>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Label
+                        Text="APPHOTEL"
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        CharacterSpacing="4"
+                        TextColor="#B18A45"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,15,0,20"/>
+
+                </VerticalStackLayout>
+            </ScrollView>
+        </ContentView>
+
+        <!-- NAVEGAÇÃO INFERIOR -->
+        <Border
+            Grid.Row="1"
+            BackgroundColor="White"
+            Stroke="#E5DED1"
+            StrokeThickness="1"
+            Padding="12">
+
+            <Grid ColumnDefinitions="*,*">
+
+                <Button
+                    Grid.Column="0"
+                    Text="INÍCIO"
+                    Clicked="OnHomeClicked"
+                    BackgroundColor="Transparent"
+                    TextColor="#17283F"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    CornerRadius="10"/>
+
+                <Button
+                    Grid.Column="1"
+                    Text="SOBRE"
+                    Clicked="OnAboutClicked"
+                    BackgroundColor="Transparent"
+                    TextColor="#B18A45"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    CornerRadius="10"/>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</ContentPage>
